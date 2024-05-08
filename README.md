@@ -1,21 +1,30 @@
 # SR-FLIPFLOP-USING-CASE
 
+
 **AIM:**
+
 
 To implement  SR flipflop using verilog and validating their functionality using their functional tables
 
+
 **SOFTWARE REQUIRED:**
+
 
 Quartus prime
 
+
 **THEORY**
+
 
 SR Flip-Flop SR flip-flop operates with only positive clock transitions or negative clock transitions. Whereas, SR latch operates with enable signal. The circuit diagram of SR flip-flop is shown in the following figure.
 
+
 ![image](https://github.com/naavaneetha/SR-FLIPFLOP-USING-CASE/assets/154305477/0f710028-ad52-4d3e-9276-8714cf023a25)
+
 
  
 This circuit has two inputs S & R and two outputs Qtt & Qtt’. The operation of SR flipflop is similar to SR Latch. But, this flip-flop affects the outputs only when positive transition of the clock signal is applied instead of active enable. The following table shows the state table of SR flip-flop.
+
 
 ![image](https://github.com/naavaneetha/SR-FLIPFLOP-USING-CASE/assets/154305477/dabfc4f4-87e3-4cbc-9472-f89ee1b5ed30)
 
@@ -34,6 +43,7 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
+
 1.Type the program in Quartus software.
 
 2.Compile and run the program.
@@ -42,43 +52,55 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 4.Create nodes for inputs and outputs to generate the timing diagram.
 
-5.For different input combinations generate the timing diagram.
+5.For different input combinations generate the timing diagram
 
 **PROGRAM**
 
-```
-Program for flipflops and verify its truth table in quartus using Verilog programming. 
 
-Developed by:SHAIK MAHAMMAD IMRAAN RegisterNumber: 212223100053
+
+Developed by:SHAIK MAHAMMAD IMRAAN
+Reg no:212223100053
+
+
 ```
-```
-module ex06(q,q_bar,s,r,clk,reset);
-//SR Flip Flop Behavioural Level using "case"
-input s,r,clk,reset;
-output reg q;
-output q_bar;
-always@(posedge clk)begin //for synchronous reset
-if (!reset) q<=0;
-else
-begin
-case({s,r})
-2'b00:q<=q;//no change
-2'b01:q<=1'b0; //write logic for reset
-2'b10:q<=1'b1; //write logic for set
-2'b11:q<=1'bx; //write logic for Invalid state
-endcase
-end
-end
-assign q_bar=~q;
+module SR_flipflop(q, q_bar, s,r, clk, reset);//SR Flip Flop Behavioral Level using ‘case’ 
+  input s,r,clk, reset;
+  output reg q;
+  output q_bar;
+ 
+  always@(posedge clk) begin // for synchronous reset
+    if(!reset)       
+	 q <= 0;
+    else 
+  begin
+      case({s,r})       
+	     2'b00: q <= q;		   // No change
+        2'b01: q <= 1'b0;	   // reset
+        2'b10: q <= 1'b1;	  // set
+        2'b11: q <= 1'bx;   // Invalid inputs
+      endcase
+    end
+  end
+  assign q_bar = ~q;
 endmodule
 ```
-**RTL LOGIC FOR FLIPFLOPS**
-![exp 6 dia](https://github.com/23003250/SR-FLIPFLOP-USING-CASE/assets/139331462/a405e7df-641d-4013-ad9f-7cdb3727ddbe)
 
+
+
+**RTL LOGIC FOR FLIPFLOPS**
+
+
+![de1](https://github.com/23002776/SR-FLIPFLOP-USING-CASE/assets/145742657/33a04914-be9a-4a83-8654-d5da50241738)
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
-![exp 6 timing](https://github.com/23003250/SR-FLIPFLOP-USING-CASE/assets/139331462/9f92297c-07ca-4958-9714-e5c46b2f29ec)
 
-**RESULT**
+
+
+![de](https://github.com/23002776/SR-FLIPFLOP-USING-CASE/assets/145742657/c4831e57-aec7-4bf6-92f9-17acb00884f6)
+
+
+
+**RESULTS**
+
 
 Thus the program to implement a SR flipflop using verilog and validating their functionality using their functional tables is successfully completed.
